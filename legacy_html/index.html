@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#040711" />
+  <title>AuraStore — Modern E-Commerce</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Top Announcement Bar -->
+  <div class="announcement-bar">
+    <div class="container announcement-content">
+      <span>✨ Limited Offer: Free express shipping on orders over $75! Use code <strong class="promo-code-pill">SAVE10</strong> for 10% off.</span>
+    </div>
+  </div>
+
+  <!-- Header & Navigation -->
+  <header class="header">
+    <div class="container header-container">
+      <a href="#" class="logo">
+        <span class="logo-icon">🛍️</span>
+        <span class="logo-text">Aura<span>Store</span></span>
+      </a>
+
+      <!-- Search Bar -->
+      <div class="search-wrapper">
+        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input type="text" id="searchInput" placeholder="Search products, brands, or categories..." autocomplete="off" />
+        <button id="searchClearBtn" class="search-clear" aria-label="Clear search">&times;</button>
+      </div>
+
+      <!-- Action Nav -->
+      <div class="header-actions">
+        <button class="cart-btn" id="openCartBtn" aria-label="Open Shopping Cart">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <path d="M16 10a4 4 0 0 1-8 0"></path>
+          </svg>
+          <span class="cart-label">Cart</span>
+          <span class="cart-badge" id="cartCount">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Banner -->
+  <section class="hero-banner">
+    <div class="container hero-grid">
+      <div class="hero-text">
+        <span class="hero-tag">New Collection 2026</span>
+        <h1 class="hero-title">Curated Essentials for Elevated Living</h1>
+        <p class="hero-subtitle">
+          Discover handpicked tech, timeless apparel, and contemporary design designed for durability, style, and everyday comfort.
+        </p>
+        <div class="hero-buttons">
+          <a href="#catalog" class="btn btn-primary">Shop All Products</a>
+          <button class="btn btn-secondary" onclick="filterCategory('Electronics')">Explore Tech</button>
+        </div>
+      </div>
+      <div class="hero-card-preview">
+        <div class="highlight-badge">🔥 Staff Pick</div>
+        <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=700&q=80" alt="Headphones Highlight" />
+        <div class="highlight-info">
+          <h3>Aura SoundPulse Pro</h3>
+          <p>$199.99 <span>$249.99</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Store Section -->
+  <main class="store-section" id="catalog">
+    <div class="container">
+      
+      <!-- Filter and Control Bar -->
+      <div class="control-bar">
+        <!-- Category Filter Tabs -->
+        <div class="category-tabs" id="categoryTabs">
+          <button class="tab-btn active" data-category="All">All Items</button>
+          <button class="tab-btn" data-category="Electronics">Electronics</button>
+          <button class="tab-btn" data-category="Fashion">Fashion</button>
+          <button class="tab-btn" data-category="Home">Home & Living</button>
+          <button class="tab-btn" data-category="Footwear">Footwear</button>
+        </div>
+
+        <!-- Sorting Dropdown -->
+        <div class="sort-wrapper">
+          <label for="sortSelect">Sort by:</label>
+          <select id="sortSelect">
+            <option value="featured">Featured</option>
+            <option value="price-low">Price: Low to High</option>
+            <option value="price-high">Price: High to Low</option>
+            <option value="rating">Highest Rated</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Results Count Status -->
+      <div class="results-info">
+        <span id="resultsCount">Showing products...</span>
+      </div>
+
+      <!-- Product Catalog Grid -->
+      <div class="product-grid" id="productGrid">
+        <!-- Rendered dynamically by script.js -->
+      </div>
+
+      <!-- Empty State (Hidden by default) -->
+      <div class="empty-results" id="emptyResults" style="display: none;">
+        <div class="empty-icon">🔍</div>
+        <h3>No products found</h3>
+        <p>Try searching with different keywords or clear your active filter.</p>
+        <button class="btn btn-secondary" id="resetFiltersBtn">Reset All Filters</button>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Features Guarantee Bar -->
+  <section class="trust-bar">
+    <div class="container trust-grid">
+      <div class="trust-item">
+        <div class="trust-icon">🚀</div>
+        <div>
+          <h4>Free Worldwide Delivery</h4>
+          <p>Orders over $75 qualify automatically</p>
+        </div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon">🛡️</div>
+        <div>
+          <h4>2-Year Warranty</h4>
+          <p>100% genuine guaranteed products</p>
+        </div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon">🔄</div>
+        <div>
+          <h4>30-Day Hassle Returns</h4>
+          <p>Instant refunds & exchange policy</p>
+        </div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon">🔒</div>
+        <div>
+          <h4>Encrypted Checkout</h4>
+          <p>256-bit SSL secured payments</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter Section -->
+  <section class="newsletter">
+    <div class="container newsletter-box">
+      <h2>Join the Aura Community</h2>
+      <p>Subscribe for exclusive product drops, member-only discounts, and tech insights.</p>
+      <form class="newsletter-form" id="newsletterForm">
+        <input type="email" id="newsletterEmail" placeholder="Enter your email address" required />
+        <button type="submit" class="btn btn-primary">Subscribe</button>
+      </form>
+      <p class="newsletter-message" id="newsletterMsg"></p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <div class="logo">
+          <span class="logo-icon">🛍️</span>
+          <span class="logo-text">Aura<span>Store</span></span>
+        </div>
+        <p class="footer-desc">Premium lifestyle & technology shop designed for modern living. Crafted with precision and quality.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Shop Categories</h4>
+        <ul>
+          <li><a href="#" onclick="filterCategory('Electronics')">Audio & Electronics</a></li>
+          <li><a href="#" onclick="filterCategory('Fashion')">Minimalist Apparel</a></li>
+          <li><a href="#" onclick="filterCategory('Home')">Home & Workstation</a></li>
+          <li><a href="#" onclick="filterCategory('Footwear')">Footwear & Sneakers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Customer Care</h4>
+        <ul>
+          <li><a href="#">Shipping & Returns</a></li>
+          <li><a href="#">Order Tracking</a></li>
+          <li><a href="#">Warranty Claim</a></li>
+          <li><a href="#">Support FAQs</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Payment Methods</h4>
+        <div class="payment-badges">
+          <span class="badge-chip">Visa</span>
+          <span class="badge-chip">Mastercard</span>
+          <span class="badge-chip">Apple Pay</span>
+          <span class="badge-chip">Google Pay</span>
+          <span class="badge-chip">PayPal</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container footer-bottom-content">
+        <p>&copy; <span id="year">2026</span> AuraStore Inc. All rights reserved.</p>
+        <p>Built with Pure Semantic HTML5, CSS & Vanilla JS.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Slide-out Cart Drawer -->
+  <div class="cart-backdrop" id="cartBackdrop"></div>
+  <aside class="cart-drawer" id="cartDrawer" aria-label="Shopping Cart">
+    <div class="cart-header">
+      <div class="cart-title-wrap">
+        <h2>Your Cart</h2>
+        <span class="cart-item-count" id="drawerCartCount">(0 items)</span>
+      </div>
+      <button class="close-btn" id="closeCartBtn" aria-label="Close cart">&times;</button>
+    </div>
+
+    <!-- Scrollable Items Area -->
+    <div class="cart-body" id="cartItemsContainer">
+      <!-- Items dynamically populated -->
+    </div>
+
+    <!-- Cart Footer with Pricing & Checkout -->
+    <div class="cart-footer" id="cartFooter">
+      <!-- Promo code coupon -->
+      <div class="coupon-box">
+        <input type="text" id="couponInput" placeholder="Promo code (try SAVE10)" />
+        <button id="applyCouponBtn" class="btn btn-sm">Apply</button>
+      </div>
+      <div id="couponMessage" class="coupon-feedback"></div>
+
+      <!-- Price Breakdown -->
+      <div class="price-breakdown">
+        <div class="breakdown-row">
+          <span>Subtotal</span>
+          <span id="cartSubtotal">$0.00</span>
+        </div>
+        <div class="breakdown-row discount-row" id="discountRow" style="display: none;">
+          <span>Discount (<span id="discountPercent">0%</span>)</span>
+          <span id="cartDiscount">-$0.00</span>
+        </div>
+        <div class="breakdown-row">
+          <span>Estimated Shipping</span>
+          <span id="cartShipping">FREE</span>
+        </div>
+        <div class="breakdown-row total-row">
+          <span>Total</span>
+          <span id="cartTotal">$0.00</span>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <button class="btn btn-primary btn-block" id="checkoutBtn">Proceed to Checkout</button>
+      <button class="btn-link btn-block" id="clearCartBtn">Clear Shopping Cart</button>
+    </div>
+  </aside>
+
+  <!-- Quick View Modal -->
+  <div class="modal-backdrop" id="modalBackdrop"></div>
+  <div class="product-modal" id="productModal" role="dialog" aria-modal="true">
+    <button class="modal-close-btn" id="closeModalBtn" aria-label="Close product modal">&times;</button>
+    <div class="modal-content" id="modalDetailsContainer">
+      <!-- Dynamically filled by script.js -->
+    </div>
+  </div>
+
+  <!-- Checkout Modal -->
+  <div class="checkout-modal" id="checkoutModal" role="dialog" aria-modal="true">
+    <button class="modal-close-btn" id="closeCheckoutBtn" aria-label="Close checkout">&times;</button>
+    <div class="checkout-container">
+      <h2>Complete Your Purchase</h2>
+      <p class="checkout-desc">Enter your delivery details to finalize your order.</p>
+
+      <form id="checkoutForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="orderName">Full Name</label>
+            <input type="text" id="orderName" placeholder="Alex Morgan" required />
+          </div>
+          <div class="form-group">
+            <label for="orderEmail">Email Address</label>
+            <input type="email" id="orderEmail" placeholder="alex@example.com" required />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="orderAddress">Shipping Address</label>
+          <input type="text" id="orderAddress" placeholder="123 Market Street, Suite 400" required />
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="orderCity">City</label>
+            <input type="text" id="orderCity" placeholder="San Francisco" required />
+          </div>
+          <div class="form-group">
+            <label for="orderZip">Postal / ZIP Code</label>
+            <input type="text" id="orderZip" placeholder="94103" required />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="cardDemo">Card Number (Demo Mock)</label>
+          <input type="text" id="cardDemo" placeholder="4000 •••• •••• 1234" maxlength="19" required />
+        </div>
+
+        <div class="checkout-summary-box">
+          <div class="breakdown-row">
+            <span>Items Total</span>
+            <span id="checkoutTotal">$0.00</span>
+          </div>
+          <p class="safe-note">🔒 Payments are securely simulated. No actual charge will be made.</p>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block" id="placeOrderBtn">Confirm & Place Order</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Order Success Notification Modal -->
+  <div class="success-modal" id="successModal" role="dialog" aria-modal="true">
+    <div class="success-content">
+      <div class="success-badge">✓</div>
+      <h2>Order Confirmed!</h2>
+      <p>Thank you for shopping with AuraStore. Your order has been placed and is being prepared.</p>
+      <div class="order-id-pill">Order ID: <strong id="confirmedOrderId">#AUR-83921</strong></div>
+      <p class="success-sub">A confirmation receipt has been sent to your email.</p>
+      <button class="btn btn-primary" id="continueShoppingBtn">Continue Shopping</button>
+    </div>
+  </div>
+
+  <!-- Toast Notification Stack -->
+  <div class="toast-stack" id="toastStack" aria-live="polite"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
